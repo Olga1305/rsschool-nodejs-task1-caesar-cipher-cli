@@ -11,10 +11,7 @@ const caesarPipeline = (options, cl) => {
   const transformStream = new Transform({
     transform(chunk, encoding, callback) {
       try {
-        chunk = caesar(chunk.toString(), options);
-        if (cl.stdin && cl.stdout) {
-          console.log(chunk);
-        }
+        chunk = caesar(chunk.toString(), options);        
         callback(null, chunk);
       } catch (err) {
         callback(err);
