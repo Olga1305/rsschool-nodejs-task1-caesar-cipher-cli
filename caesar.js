@@ -1,4 +1,4 @@
-const caesar = (string, shift) => {
+const encode = (string, shift) => {
   return string
     .split("")
     .map((item) => {
@@ -16,4 +16,8 @@ const caesar = (string, shift) => {
     .join("");
 };
 
-module.exports = { caesar };
+const decode = (text, shift) => {  
+  return encode(text, 26 - (shift % 26));
+};
+
+module.exports = { encode, decode };

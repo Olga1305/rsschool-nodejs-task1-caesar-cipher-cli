@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "RS SCHOOL - Node.js - Task 1 Caesar cipher CLI tool",
   "main": "index.js",
-  "bin": {  
-    "task1": "./index.js"
+  "bin": {
+    "my_caesar_cli": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,6 +18,10 @@
     "url": "git+https://github.com/Olga1305/rsschool-nodejs-task1-caesar-cipher-cli.git"
   },
   "author": "Olga Dokukova",
-  "license": "ISC",  
-  "homepage": "https://github.com/Olga1305/rsschool-nodejs-task1-caesar-cipher-cli#readme"
+  "license": "ISC",
+  "homepage": "https://github.com/Olga1305/rsschool-nodejs-task1-caesar-cipher-cli#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "commander": "^7.2.0"
+  }
 }

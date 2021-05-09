@@ -1,9 +1,34 @@
 #!/usr/bin/env node
+const chalk = require("chalk");
+const { program } = require("commander");
+program.version("0.0.1");
 
-const { caesar } = require("./caesar");
+const { validateArgs } = require("./validateArgs");
 
-const test = 'This is secret. Message about "_" symbol!';
+program
+  .option("-s, --shift <number>", "a shift")
+  .option("-a, --action <encode/decode>", "an action encode/decode")
+  .option("-i, --input <file>", "an input file")
+  .option("-o, --output <file>", "an output file")
+  .action((options) => {
+    const cl = validateArgs(options);
+    console.log(cl);
+  });
 
-const shift = 7;
+program.exitOverride();
 
-console.log(caesar(test, shift));
+try {
+  program.parse(process.argv);
+} catch (err) {
+  process.stderr.write(
+    chalk.bold.red(
+      `${
+        err.code === "commander.optionMissingArgument"
+          ? "You can't use flag/s -s (or --shift), -a (or --action), -i (or --input), -o (or -output) without argument/s\n"
+          : `${err}\n`
+      }`,
+      `${err}\n`
+    )
+  );
+  process.exit(1);
+}
